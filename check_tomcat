@@ -61,7 +61,7 @@ function check_instance_apps()
 
 function check_instance_memory()
 {
-	set_instance_data "java.lang:type=Memory" "Heap|NonH"
+	set_instance_data "java.lang:type=Memory" "HeapMemoryUsage|NonHeapMemoryUsage"
 
 	if [[ "$(is_data_valid)" -eq "1" ]]
 	then
@@ -113,7 +113,7 @@ function check_instance_memory()
 
 function check_instance_pools()
 {
-	set_instance_data "Catalina:type=DataSource,*" "maxA|maxT|numA"
+	set_instance_data "Catalina:type=DataSource,*" "maxActive|maxTotal|numActive"
 
 	if [[ "$(is_data_valid)" -eq "1" ]]
 	then
@@ -156,7 +156,7 @@ function check_instance_pools()
 
 function check_instance_threads()
 {
-	set_instance_data "Catalina:type=ThreadPool,*" "currentThreadsB|maxT"
+	set_instance_data "Catalina:type=ThreadPool,*" "currentThreadsBusy|maxThreads"
 
 	if [[ "$(is_data_valid)" -eq "1" ]]
 	then
